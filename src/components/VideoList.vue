@@ -12,7 +12,6 @@
 import VideoListItem from "./VideoListItem";
 
 export default {
-  // không khác gì @Input()
   props: {
     videos: Array,
   },

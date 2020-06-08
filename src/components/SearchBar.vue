@@ -1,23 +1,26 @@
 <template>
-  <div>
-    <!-- y chang (input)="" -->
+  <div class="d-flex">
+    <!-- giống với [(ngModel)]="" -->
     <input
-      class="form-control"
+      class="form-control mr-2"
       placeholder="Keyword..."
-      @keydown.enter="onInput"
+      @keydown.enter="onSearch"
+      v-model="keyword"
     />
+    <button class="btn btn-danger" @click="onSearch">Search</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: "search-bar",
+  data() {
+    return { keyword: null };
+  },
   methods: {
-    onInput(event) {
-      const keyword = event.target.value;
-      if (keyword == "") return;
+    onSearch() {
+      if (this.keyword == "") return;
       // tương đương @Ouput() và EventEmitter().emit('')
-      this.$emit("keywordChange", keyword);
+      this.$emit("keywordChange", this.keyword);
     },
   },
 };

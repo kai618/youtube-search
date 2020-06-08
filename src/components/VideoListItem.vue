@@ -1,5 +1,5 @@
 <template>
-  <li class="list-group-item list-group-item-action">
+  <li class="list-group-item list-group-item-action" @click="toWatchPage">
     <div class="d-flex align-items-center">
       <div class="d-flex align-items-center">
         <img class="rounded" :src="thumbnailURL" />
@@ -19,13 +19,20 @@ export default {
       return this.video.snippet.thumbnails.default.url;
     },
   },
+  methods: {
+    toWatchPage() {
+      this.$router.push(`/watch/${this.video.id.videoId}`);
+    },
+  },
 };
 </script>
 
 <style scoped>
 img {
-  margin: auto auto;
   width: 100px;
   object-fit: contain;
+}
+li {
+  cursor: pointer;
 }
 </style>
